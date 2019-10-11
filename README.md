@@ -7,8 +7,12 @@
 
 ## Results
 - kdd2017_presentation slides. You can see the full publication at https://dl.acm.org/citation.cfm?id=3098045 and a promo video at https://www.youtube.com/watch?v=ACHhhOEzWAY&t=1s   
-- sbbd2016_paper:  
+- sbbd2016_paper: Paper from the poster presentation made at the Brazilian Symposium on Databases (SBBD) (Portuguese)  
+- pgm2015_coursereport: Hierarchical Bayesian Model to predict the number of goals in soccer leagues. Report presented at the Probabilistic Graphical Models course (Portuguese)
 
+## Data
+- model: NBA's player salaries, network effects, matches results between 2012 and 2016.
+- scale:  
 
 Master thesis and Kdd2017 paper source code. This repository contains:  
 
