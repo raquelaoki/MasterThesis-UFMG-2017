@@ -11,8 +11,8 @@
 - pgm2015_coursereport: Hierarchical Bayesian Model to predict the number of goals in soccer leagues. Report presented at the Probabilistic Graphical Models course (Portuguese)
 
 ## Data
-- model: NBA's player salaries, network effects, matches results between 2012 and 2016.
-- scale:  
+- model: NBA's player salaries, network effects, matches results between 2012 and 2016 (source www.basketball-reference.com). 
+- scale:  results from soccer, handball, basketball and voleyball matches between 2007 and 2016. Data download from  (source ewww.betexplorer.com)
 
 Master thesis and Kdd2017 paper source code. This repository contains:  
 
