@@ -1,5 +1,4 @@
-# MasterThesis-UFMG-2017
-#Rename to ProjectSportAnalytics2017
+# Project Sport Analytics 2017
 
 Master Thesis Project 
 
