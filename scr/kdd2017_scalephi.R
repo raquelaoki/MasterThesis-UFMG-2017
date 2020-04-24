@@ -57,8 +57,8 @@ funcao.escala_phi<-function(jogos,esporte,alpha){
     p.aux  = 0 
     tab1 = data.frame(p =c("p1","p2","p3","p4"),prob=c(ph,pa,pe,p.aux))
     #Media e variancia dos pontos ganhos em casa e fora de casa
-    mh = 3*ph + pe ; vh = 9*ph+pe - mh^2 
-    ma = 3*pa + pe ; va = 9*pa+pe - ma^2
+    mh = 2*ph + pe ; vh = 4*ph+pe - mh^2 
+    ma = 2*pa + pe ; va = 4*pa+pe - ma^2
     
     pontuacao_final = data.frame(equipes, pontos=rep(0,length(equipes)))
     for(i in 1:dim(jogos)[1]){
@@ -137,7 +137,7 @@ if(var.amostral>=quantile1 & var.amostral<=quantile2) pch = 18
 
 
   
-  #quantos times devem ser retirados até ficar aleatório?
+  #quantos times devem ser retirados atÃ© ficar aleatÃ³rio?
   # codigo repete etapa acima
   if(pch == 19 ) {
     equipes.2 = equipes
@@ -146,7 +146,7 @@ if(var.amostral>=quantile1 & var.amostral<=quantile2) pch = 18
     sinal.2 = c()
     jogos.2 = jogos
     while(pch.2 == 19 & (length(retirar.2)+2)<length(equipes)){
-      #selecionando a equipe mais distante da média
+      #selecionando a equipe mais distante da mÃ©dia
       pontuacao_final = pontuacao_final[order(pontuacao_final$pontos, decreasing=T),]
       pontuacao_final$distancia = abs(pontuacao_final$pontos - mean(pontuacao_final$pontos))
       retirar = as.character(subset(pontuacao_final, distancia == max(distancia))$equipes)
@@ -157,7 +157,7 @@ if(var.amostral>=quantile1 & var.amostral<=quantile2) pch = 18
       jogos.2 = subset(jogos.2, MANDANTE!= retirar)
       jogos.2 = subset(jogos.2, VISITANTE != retirar)
       
-      #Verificando se é o melhor ou pior time do campeonato
+      #Verificando se Ã© o melhor ou pior time do campeonato
       aux = as.character(pontuacao_final$equipes[1])
       aux2 = as.character(pontuacao_final$equipes[2])
       if(aux==retirar | aux2 == retirar) {retirar = paste("+", retirar, sep=""); sinal = "+"}
@@ -212,8 +212,8 @@ if(var.amostral>=quantile1 & var.amostral<=quantile2) pch = 18
         pe = sum(jogos.2$dif==0)/length(jogos.2$dif)  	
       #  tab1 = data.frame(p =c("p_H","p_A","p_E"),prob=c(ph,pa,pe))
         #Media e variancia dos pontos ganhos em casa e fora de casa
-        mh = 3*ph + pe ; vh = 9*ph+pe - mh^2 
-        ma = 3*pa + pe ; va = 9*pa+pe - ma^2
+        mh = 2*ph + pe ; vh = 9*ph+pe - mh^2 
+        ma = 2*pa + pe ; va = 9*pa+pe - ma^2
         
         pontuacao_final = data.frame(equipes.2, pontos=rep(0,length(equipes.2)))
         for(i in 1:dim(jogos.2)[1]){
@@ -287,7 +287,7 @@ if(var.amostral>=quantile1 & var.amostral<=quantile2) pch = 18
   }
   if(is.null(aux3)) {aux3=".";sinal.2="."}
 
-  return(list(valor.phi,cv, dim(jogos)[1],length(equipes), pch,length(retirar.2),aux3,valor.phi.2,sinal.2,tab1,campeao)) #valor.phi.2 é a valor.phi,var apos retirar
+  return(list(valor.phi,cv, dim(jogos)[1],length(equipes), pch,length(retirar.2),aux3,valor.phi.2,sinal.2,tab1,campeao)) #valor.phi.2 Ã© a valor.phi,var apos retirar
 }
 
 #tab1 tem as probabilidades de cada resultado:
@@ -325,6 +325,6 @@ tab$pch[tab$pch=="19"]="Different"
 tab$pch[tab$pch=="18"]="Equal"
 write.table(tab, "escala_phi_jogos4.csv",row.names = F, sep=";")
 
-#o 3. � sem retirar jogos 
-# o 4. � retirando os jogos (mais de um "casal")
+#o 3. é sem retirar jogos 
+# o 4. é retirando os jogos (mais de um "casal")
 k
