@@ -212,8 +212,8 @@ if(var.amostral>=quantile1 & var.amostral<=quantile2) pch = 18
         pe = sum(jogos.2$dif==0)/length(jogos.2$dif)  	
       #  tab1 = data.frame(p =c("p_H","p_A","p_E"),prob=c(ph,pa,pe))
         #Media e variancia dos pontos ganhos em casa e fora de casa
-        mh = 2*ph + pe ; vh = 9*ph+pe - mh^2 
-        ma = 2*pa + pe ; va = 9*pa+pe - ma^2
+        mh = 2*ph + pe ; vh = 4*ph+pe - mh^2 
+        ma = 2*pa + pe ; va = 4*pa+pe - ma^2
         
         pontuacao_final = data.frame(equipes.2, pontos=rep(0,length(equipes.2)))
         for(i in 1:dim(jogos.2)[1]){
