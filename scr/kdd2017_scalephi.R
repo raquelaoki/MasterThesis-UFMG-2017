@@ -77,8 +77,8 @@ funcao.escala_phi<-function(jogos,esporte,alpha){
     p.aux  = 0
     tab1 = data.frame(p =c("p1","p2","p3","p4"),prob=c(ph,pa,p.aux,p.aux))
     #Media e variancia dos pontos ganhos em casa e fora de casa
-    mh = ph  ; vh = ph - mh^2 
-    ma = pa  ; va = pa-  ma^2
+    mh = 2*ph  ; vh = 4*ph - mh^2 
+    ma = 2*pa  ; va = 4*pa-  ma^2
     
     pontuacao_final = data.frame(equipes = equipes, pontos=rep(0,length(equipes)))
     for(i in 1:dim(jogos)[1]){
@@ -111,8 +111,8 @@ funcao.escala_phi<-function(jogos,esporte,alpha){
   pontuacao_final = pontuacao_final[order(pontuacao_final$pontos,decreasing = T),]
   campeao = pontuacao_final$equipes[1]
   # Media e variancia de yk
-  mk = (dim(jogos)[1]/length(equipes))*(mh+ma)
-  vk = (dim(jogos)[1]/length(equipes))*(vh+va)
+  mk = (dim(jogos)[1]/length(equipes))*(mh+ma)/2
+  vk = (dim(jogos)[1]/length(equipes))*(vh+va)/2
   
   media.amostral = mean(pontuacao_final$pontos)
   var.amostral = var(pontuacao_final$pontos)
@@ -196,8 +196,8 @@ if(var.amostral>=quantile1 & var.amostral<=quantile2) pch = 18
         pa = sum(jogos.2$dif<0)/length(jogos.2$dif)  
       #  tab1 = data.frame(p =c("p_H","p_A"),prob=c(ph,pa))
         #Media e variancia dos pontos ganhos em casa e fora de casa
-        mh = ph  ; vh = ph - mh^2 
-        ma = pa  ; va = pa-  ma^2
+        mh = 2*ph  ; vh = 4*ph - mh^2 
+        ma = 2*pa  ; va = 4*pa-  ma^2
         
         pontuacao_final = data.frame(equipes.2 = equipes.2, pontos=rep(0,length(equipes.2)))
         for(i in 1:dim(jogos.2)[1]){
@@ -248,8 +248,8 @@ if(var.amostral>=quantile1 & var.amostral<=quantile2) pch = 18
       
       
       # Media e variancia de yk
-      mk = (dim(jogos.2)[1]/length(equipes.2))*(mh+ma)
-      vk = (dim(jogos.2)[1]/length(equipes.2))*(vh+va)   
+      mk = (dim(jogos.2)[1]/length(equipes.2))*(mh+ma)/2
+      vk = (dim(jogos.2)[1]/length(equipes.2))*(vh+va)/2   
       media.amostral = mean(pontuacao_final$pontos)
       var.amostral =  var(pontuacao_final$pontos)
       
